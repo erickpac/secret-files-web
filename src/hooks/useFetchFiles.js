@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import fetchFiles from "../services/fetchFiles";
 
-const useFetchFiles = () => {
+const useFetchFiles = (fileName) => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,8 +9,11 @@ const useFetchFiles = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchFiles();
-        setFiles(data);
+        const data = await fetchFiles(fileName);
+        const files = data.flatMap((file) =>
+          file.lines.map((line) => ({ ...line, file: file.file })),
+        );
+        setFiles(files);
       } catch (error) {
         console.error("Error fetching files:", error);
         setError(error);
@@ -20,7 +23,7 @@ const useFetchFiles = () => {
     };
 
     fetchData();
-  }, []);
+  }, [fileName]);
 
   return { files, loading, error };
 };

@@ -1,6 +1,12 @@
-const fetchFiles = async () => {
+const fetchFiles = async (fileName) => {
   try {
-    const response = await fetch("http://localhost:3000/api/v1/files/data");
+    const newURL = new URL("http://localhost:3000/api/v1/files/data");
+
+    if (fileName) {
+      newURL.searchParams.append("fileName", fileName);
+    }
+
+    const response = await fetch(newURL.toString());
     const data = await response.json();
     return data;
   } catch (error) {
