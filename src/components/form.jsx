@@ -11,7 +11,7 @@ export const SearchFileForm = ({ handleFormSubmit }) => (
       />
     </Form.Group>
     <Button variant="primary" type="submit">
-      Submit
+      Search
     </Button>
   </Form>
 );
