@@ -19,10 +19,10 @@ export const FilesTable = ({ files }) => {
       <tbody>
         {files.map((file, index) => (
           <tr key={index}>
-            <td>{file.file}</td>
-            <td>{file.text}</td>
-            <td>{file.number}</td>
-            <td>{file.hex}</td>
+            <td className="text-start">{file.file}</td>
+            <td className="text-start">{file.text}</td>
+            <td className="text-start">{file.number}</td>
+            <td className="text-start">{file.hex}</td>
           </tr>
         ))}
       </tbody>

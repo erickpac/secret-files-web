@@ -8,6 +8,9 @@ export const useFetchFiles = (fileName) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+      setError(null);
+
       try {
         const data = await fetchFiles(fileName);
         const files = data.flatMap((file) =>
