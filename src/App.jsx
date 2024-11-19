@@ -1,4 +1,5 @@
 import { Container } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
 import FilesForm from "./components/form";
 import FilesTable from "./components/table";
 import { useState } from "react";
@@ -14,6 +15,7 @@ function App() {
     e.preventDefault();
     const formData = new FormData(e.target);
     const fileName = formData.get("fileName");
+
     setFileName(fileName);
   };
 
@@ -21,14 +23,11 @@ function App() {
     <Container>
       <h1>Secret Files</h1>
 
+      <FilesForm handleFormSubmit={handleFormSubmit} />
+
       {loading && <p>Loading files...</p>}
-      {error && <p>Error loading files: {error.message}</p>}
-      {!loading && !error && (
-        <>
-          <FilesForm handleFormSubmit={handleFormSubmit} />
-          <FilesTable files={files} />
-        </>
-      )}
+      {error && <Alert variant="danger">{error.message}</Alert>}
+      {!loading && !error && <FilesTable files={files} />}
     </Container>
   );
 }

@@ -15,7 +15,6 @@ const useFetchFiles = (fileName) => {
         );
         setFiles(files);
       } catch (error) {
-        console.error("Error fetching files:", error);
         setError(error);
       } finally {
         setLoading(false);

@@ -2,7 +2,7 @@
 import { Form, Button } from "react-bootstrap";
 
 const FilesForm = ({ handleFormSubmit }) => (
-  <Form onSubmit={handleFormSubmit}>
+  <Form onSubmit={handleFormSubmit} className="mb-3">
     <Form.Group controlId="formFile" className="mb-3">
       <Form.Control
         type="text"
