@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import fetchFiles from "../services/fetchFiles";
+import { fetchFiles } from "../services/fetchFiles";
 
-const useFetchFiles = (fileName) => {
+export const useFetchFiles = (fileName) => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,5 +26,3 @@ const useFetchFiles = (fileName) => {
 
   return { files, loading, error };
 };
-
-export default useFetchFiles;

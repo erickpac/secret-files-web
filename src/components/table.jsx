@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-import { Table } from "react-bootstrap";
-import Alert from "react-bootstrap/Alert";
+import { Table, Alert } from "react-bootstrap";
 
-const FilesTable = ({ files }) => {
+export const FilesTable = ({ files }) => {
   if (!files || files.length === 0) {
     return <Alert variant="info">No files found</Alert>;
   }
@@ -30,5 +29,3 @@ const FilesTable = ({ files }) => {
     </Table>
   );
 };
-
-export default FilesTable;

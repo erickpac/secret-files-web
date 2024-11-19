@@ -1,9 +1,8 @@
-import { Container } from "react-bootstrap";
-import Alert from "react-bootstrap/Alert";
-import FilesForm from "./components/form";
-import FilesTable from "./components/table";
+import { Container, Alert } from "react-bootstrap";
+import { SearchFileForm } from "./components/form";
+import { FilesTable } from "./components/table";
 import { useState } from "react";
-import useFetchFiles from "./hooks/useFetchFiles";
+import { useFetchFiles } from "./hooks/useFetchFiles";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -23,7 +22,7 @@ function App() {
     <Container>
       <h1>Secret Files</h1>
 
-      <FilesForm handleFormSubmit={handleFormSubmit} />
+      <SearchFileForm handleFormSubmit={handleFormSubmit} />
 
       {loading && <p>Loading files...</p>}
       {error && <Alert variant="danger">{error.message}</Alert>}

@@ -1,4 +1,4 @@
-const fetchFiles = async (fileName) => {
+export const fetchFiles = async (fileName) => {
   try {
     const newURL = new URL("http://localhost:3000/api/v1/files/data");
 
@@ -18,5 +18,3 @@ const fetchFiles = async (fileName) => {
     throw new Error(`Failed to fetch files, ${error.message}`);
   }
 };
-
-export default fetchFiles;

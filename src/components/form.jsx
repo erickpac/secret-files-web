@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Form, Button } from "react-bootstrap";
 
-const FilesForm = ({ handleFormSubmit }) => (
+export const SearchFileForm = ({ handleFormSubmit }) => (
   <Form onSubmit={handleFormSubmit} className="mb-3">
     <Form.Group controlId="formFile" className="mb-3">
       <Form.Control
@@ -15,5 +15,3 @@ const FilesForm = ({ handleFormSubmit }) => (
     </Button>
   </Form>
 );
-
-export default FilesForm;
