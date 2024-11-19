@@ -1,38 +1,35 @@
+import { Container } from "react-bootstrap";
+import FilesForm from "./components/form";
+import FilesTable from "./components/table";
 import { useState } from "react";
 import useFetchFiles from "./hooks/useFetchFiles";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const { files, loading, error } = useFetchFiles();
+  const [fileName, setFileName] = useState("");
+  const { files, loading, error } = useFetchFiles(fileName);
 
-  console.log({ files, loading, error });
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const fileName = formData.get("fileName");
+    setFileName(fileName);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Container>
+      <h1>Secret Files</h1>
+
+      {loading && <p>Loading files...</p>}
+      {error && <p>Error loading files: {error.message}</p>}
+      {!loading && !error && (
+        <>
+          <FilesForm handleFormSubmit={handleFormSubmit} />
+          <FilesTable files={files} />
+        </>
+      )}
+    </Container>
   );
 }
 
