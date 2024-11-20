@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
 import { render, screen, fireEvent } from "@testing-library/react";
-import { useFetchFiles } from "../hooks/useFetchFiles";
-import App from "../App";
+import { useFetchFiles } from "../src/hooks/useFetchFiles";
+import App from "../src/App";
 
-vi.mock("../hooks/useFetchFiles");
+vi.mock("../src/hooks/useFetchFiles");
 
 describe("App Component", () => {
   beforeEach(() => {
